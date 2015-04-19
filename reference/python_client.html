@@ -1,0 +1,352 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Python client reference &#8212; HBP Neuromorphic Computing Platform Guidebook (WIP)</title>
+    <link rel="stylesheet" href="../_static/hbpdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2020-01-21 09:33:28 (cc9c98a)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/extra.js"></script>
+    <script type="text/javascript" src="../_static/hbpdoc.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Appendix: Miscellaneous" href="../appendix.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+  <body>
+<div class="hbpdoc-page">
+    <section class="hbpdoc-title page-header">
+        <a class="project-title" href="../index.html">HBP Neuromorphic Computing Platform Guidebook</a>
+
+        <a class="hbpdoc-toc-toggle pull-right" href>
+            <span class="zmdi zmdi-menu"></span> <span class="sr-only icon-text">Menu</span>
+        </a>
+    </section>
+    <section class="hbpdoc-main">
+        <nav class="hbpdoc-sidebar hbpdoc-container">
+            <a class="hbpdoc-toc-toggle pull-right" href>
+                <span class="zmdi zmdi-menu"></span> <span class="sr-only icon-text">Menu</span>
+            </a>
+            
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/HBP_Primary_RGB_logoOnlyScaled68px.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../appendix.html"
+                        title="previous chapter">Appendix: Miscellaneous</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/python_client.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+        </nav>
+
+        <article class="hbpdoc-content">
+
+            <div class="content">
+                
+
+                <aside class="hbpdoc-hnav hbpdoc-hnav-top">
+                    
+                    <span class="hbpdoc-hnav-previous">
+                        previous: <a class="hbpdoc-hnav-link" href="../appendix.html">Appendix: Miscellaneous</a>
+                    </span>
+                    
+                    
+                </aside>
+
+                <div class="section" id="python-client-reference">
+<h1>Python client reference<a class="headerlink" href="#python-client-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nmpi.Client">
+<em class="property">class </em><code class="descclassname">nmpi.</code><code class="descname">Client</code><span class="sig-paren">(</span><em>username=None</em>, <em>password=None</em>, <em>job_service='https://nmpi.hbpneuromorphic.eu/api/v2/'</em>, <em>quotas_service='https://quotas.hbpneuromorphic.eu'</em>, <em>token=None</em>, <em>verify=True</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Client for interacting with the Neuromorphic Computing Platform of
+the Human Brain Project.</p>
+<p>This includes submitting jobs, tracking job status and retrieving the
+results of completed jobs.</p>
+<dl class="docutils">
+<dt><em>Arguments</em>:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">username, password:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">credentials for accessing the platform.
+Not needed in Jupyter notebooks within the HBP Collaboratory.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">job_service:</th><td class="field-body">the base URL of the platform Job Service.
+Generally the default value should be used.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">quotas_service:</th><td class="field-body">the base URL of the platform Quotas Service.
+Generally the default value should be used.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">token:</th><td class="field-body">when you authenticate with username and password, you will receive
+a token which can be used in place of the password until it expires.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">verify:</th><td class="field-body">in case of problems with SSL certificate verification, you can
+set this to False, but this is not recommended.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="nmpi.Client.user_info">
+<code class="descname">user_info</code><a class="headerlink" href="#nmpi.Client.user_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Information about the current user, as retrieved from the Collaboratory</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.submit_job">
+<code class="descname">submit_job</code><span class="sig-paren">(</span><em>source</em>, <em>platform</em>, <em>collab_id</em>, <em>config=None</em>, <em>inputs=None</em>, <em>command='run.py {system}'</em>, <em>tags=None</em>, <em>wait=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.submit_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submit a job to the platform.</p>
+<dl class="docutils">
+<dt><em>Arguments</em>:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">source:</th><td class="field-body">the Python script to be run, the URL of a public version
+control repository containing Python code, a zip file
+containing Python code, or a local directory containing
+Python code.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">platform:</th><td class="field-body">the neuromorphic hardware system to be used.
+Either “BrainScaleS” or “SpiNNaker”.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">collab_id:</th><td class="field-body">the ID of the collab to which the job belongs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">config:</th><td class="field-body">(optional) a dictionary containing configuration information
+for the hardware platform. See the Platform Guidebook for
+more details.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">inputs:</th><td class="field-body">a list of URLs for datafiles needed as inputs to the
+simulation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">command:</th><td class="field-body">(optional) the path to the main Python script relative to
+the root of the repository or zip file. Defaults to “run.py {system}”.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">tags:</th><td class="field-body">(optional) a list of tags (strings) describing the job.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">wait:</th><td class="field-body">(default False) if True, do not return until the job has completed,
+if False, return immediately with the job id.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd>The job id as a relative URI
+unless <cite>wait=True</cite>, in which case returns the job as a dictionary.</dd>
+<dt><em>Notes</em>:</dt>
+<dd>If the <cite>source</cite> argument is a directory containing Python code, the
+directory contents will be uploaded to Collab storage into a folder
+named according to the property <cite>client.collab_source_folder</cite>
+(default: “source_code”)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.job_status">
+<code class="descname">job_status</code><span class="sig-paren">(</span><em>job_id</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.job_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current status of the job with ID <cite>job_id</cite> (integer or URI).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.get_job">
+<code class="descname">get_job</code><span class="sig-paren">(</span><em>job_id</em>, <em>with_log=True</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.get_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return full details of the job with ID <cite>job_id</cite> (integer or URI).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.remove_completed_job">
+<code class="descname">remove_completed_job</code><span class="sig-paren">(</span><em>job_id</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.remove_completed_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a job from the interface.</p>
+<p>The job is hidden rather than being permanently deleted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.remove_queued_job">
+<code class="descname">remove_queued_job</code><span class="sig-paren">(</span><em>job_id</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.remove_queued_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a job from the interface.</p>
+<p>The job is hidden rather than being permanently deleted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.queued_jobs">
+<code class="descname">queued_jobs</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.queued_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of jobs belonging to the current user in the queue.</p>
+<dl class="docutils">
+<dt><em>Arguments</em>:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">verbose:</th><td class="field-body">if False, return just the job URIs,
+if True, return full details.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.completed_jobs">
+<code class="descname">completed_jobs</code><span class="sig-paren">(</span><em>collab_id</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.completed_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of completed jobs in the given collab.</p>
+<dl class="docutils">
+<dt><em>Arguments</em>:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">verbose:</th><td class="field-body">if False, return just the job URIs,
+if True, return full details.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.download_data">
+<code class="descname">download_data</code><span class="sig-paren">(</span><em>job</em>, <em>local_dir='.'</em>, <em>include_input_data=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.download_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download output data files produced by a given job to a local directory.</p>
+<dl class="docutils">
+<dt><em>Arguments</em>:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">job:</th><td class="field-body">a full job description (dict), as returned by <cite>get_job()</cite>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">local_dir:</th><td class="field-body">path to a directory into which files shall be saved.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">include_input_data:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">also download input data files.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.copy_data_to_storage">
+<code class="descname">copy_data_to_storage</code><span class="sig-paren">(</span><em>job_id</em>, <em>destination='collab'</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.copy_data_to_storage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the data produced by the job with id <cite>job_id</cite> to Collaboratory
+storage or to the HPAC Platform. Note that copying data to an HPAC
+site requires that you have an account for that site.</p>
+<p><em>Example</em>:</p>
+<p>To copy data to the JURECA machine:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">copy_data_to_storage</span><span class="p">(</span><span class="mi">90712</span><span class="p">,</span> <span class="s2">&quot;JURECA&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To copy data to Collab storage:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">copy_data_to_storage</span><span class="p">(</span><span class="mi">90712</span><span class="p">,</span> <span class="s2">&quot;collab&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.create_data_item">
+<code class="descname">create_data_item</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.create_data_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register a data item with the platform.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.create_resource_request">
+<code class="descname">create_resource_request</code><span class="sig-paren">(</span><em>title</em>, <em>collab_id</em>, <em>abstract</em>, <em>description=None</em>, <em>submit=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.create_resource_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new resource request. By default, it will not be submitted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.edit_resource_request">
+<code class="descname">edit_resource_request</code><span class="sig-paren">(</span><em>request_id</em>, <em>title=None</em>, <em>abstract=None</em>, <em>description=None</em>, <em>submit=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.edit_resource_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edit and/or submit an unsubmitted resource request</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.list_resource_requests">
+<code class="descname">list_resource_requests</code><span class="sig-paren">(</span><em>collab_id</em>, <em>status=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.list_resource_requests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of resource requests for the Neuromorphic Platform</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.list_quotas">
+<code class="descname">list_quotas</code><span class="sig-paren">(</span><em>collab_id</em><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.list_quotas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of quotas for running jobs on the Neuromorphic Platform</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmpi.Client.my_collabs">
+<code class="descname">my_collabs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nmpi.Client.my_collabs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of collabs of which the user is a member.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+            </div>
+
+            <aside class="hbpdoc-hnav hbpdoc-hnav-bottom">
+                
+                <span class="hbpdoc-hnav-previous">
+                    previous: <a class="hbpdoc-hnav-link" href="../appendix.html">Appendix: Miscellaneous</a>
+                </span>
+                
+                
+            </aside>
+        </article>
+    </section>
+
+
+    <div class="hbpdoc-footer">
+        HBP Neuromorphic Computing Platform Guidebook <small>2020-01-21 09:33:28 (cc9c98a)</small> 
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2016, Andrew P. Davison, Eric Müller, Sebastian Schmitt, Bernhard Vogginger, David Lester, Thomas Pfeil, ....
+      Last updated on Jan 21, 2020 (cc9c98a, preliminary documentation).
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+    </div>
+</div>
+
+  </body>
+</html>
