@@ -29,6 +29,7 @@ marocco.experiment_time_offset = 5.e-7 # can be low for ESS, as no repeater lock
 marocco.neuron_placement.default_neuron_size(4) # default number of hardware neuron circuits per pyNN neuron
 marocco.persist = "nmpm1_adex_neuron_ess.bin"
 marocco.param_trafo.use_big_capacitors = False
+marocco.skip_weight_calibration=True
 
 # set-up the simulator
 pynn.setup(marocco=marocco)
